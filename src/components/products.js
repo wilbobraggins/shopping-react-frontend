@@ -24,25 +24,24 @@ class ProductsContainer extends Component {
   
 
   render() {
-      const data = this.state.products
-      const display = Object.keys(data).map((d, key) => {
-        return ( 
-          <div key={key}>
-            <li >
-              <ul>
-              {d.attributes}
-              </ul>
-            </li>  
-          </div> 
-        )
-      })
-      return(
-        <div>
-          <ul>
-            { display }
-          </ul>
-        </div>
-      )
+    return (
+      <div>
+        {Object.keys(this.state.products).map((data, i) => (
+          <div key={i}>
+            <h2>{data}</h2>
+            <ul>
+              {this.state.products.data.map((keys, k) => (
+               <React.Fragment key={k}>
+                <li>{keys.attributes.item}</li>
+                <li>{keys.attributes.price}</li> 
+              </React.Fragment>  
+              
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    );
   }
 }
 
